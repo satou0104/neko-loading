@@ -1,0 +1,605 @@
+/* リセット・基本設定 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', 'Arial', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  background: #0a0a0f;
+  color: #ffffff;
+}
+
+/* CSS変数 */
+:root {
+  --bg: #0a0a0f;
+  --bg-secondary: #1a1a2e;
+  --text: #ffffff;
+  --text-secondary: #a0a0a0;
+  --primary: linear-gradient(135deg, #667eea, #764ba2);
+  --success: #51cf66;
+  --warning: #ffd43b;
+  --danger: #ff6b6b;
+}
+
+/* 画面遷移 */
+.screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.screen.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.screen.no-transition {
+  transition: none;
+}
+
+/* ホーム画面 */
+#home-screen {
+  background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 50%, #2a2a4e 100%);
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#home-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.home-animation {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin-bottom: 0;
+}
+
+#home-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+.app-logo {
+  font-size: 52px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #64d8cb, #8b9dc3, #667eea);
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  text-shadow: 0 0 40px rgba(100, 216, 203, 0.3);
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.app-subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: #8b9dc3;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.progress-info {
+  font-size: 16px;
+  font-weight: 300;
+  color: #a0a0a0;
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+}
+
+#clear-count {
+  color: #64d8cb;
+  font-weight: 400;
+  font-size: 22px;
+}
+
+/* ボタン */
+.btn-primary, .btn-secondary {
+  padding: 16px 48px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 200px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.btn-large {
+  font-size: 24px;
+  padding: 20px 60px;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ヘッダー */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: 600;
+  background: var(--primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-icon:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.btn-icon-placeholder {
+  width: 40px;
+  height: 40px;
+}
+
+/* ステージ選択 */
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.stage-item {
+  aspect-ratio: 1;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(26, 26, 46, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+
+.stage-item:active {
+  transform: scale(0.95);
+}
+
+.stage-item.cleared {
+  border-color: var(--success);
+  background: rgba(81, 207, 102, 0.1);
+}
+
+.stage-number {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.stage-stars {
+  font-size: 14px;
+  color: var(--warning);
+}
+
+/* ゲーム画面 */
+.game-info {
+  display: flex;
+  justify-content: center;
+  padding: 12px 16px;
+  background: rgba(26, 26, 46, 0.6);
+  gap: 12px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.info-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.info-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.game-area {
+  position: relative;
+  flex: 1;
+  background: linear-gradient(180deg, #1a1a3e 0%, #2a2a4e 100%);
+  overflow: hidden;
+  touch-action: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#game-canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.neko-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.game-instruction {
+  padding: 16px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(102, 126, 234, 0.2);
+  border-top: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+/* 猫の手ボタン */
+.neko-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 0;
+  background: rgba(26, 26, 46, 0.8);
+  gap: 8px;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+}
+
+.neko-button {
+  width: 140px;
+  height: 220px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  margin-bottom: -70px; /* 下部分を画面外に */
+}
+
+.neko-button:active {
+  transform: translateY(-10px); /* 押すと少し上に */
+}
+
+.neko-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.neko-button.correct img {
+  animation: correctFlash 0.3s ease-out;
+}
+
+.neko-button.wrong img {
+  animation: wrongFlash 0.3s ease-out;
+}
+
+@keyframes correctFlash {
+  0%, 100% {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px #51cf66) drop-shadow(0 0 40px #51cf66);
+  }
+}
+
+@keyframes wrongFlash {
+  0%, 100% {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px #ff6b6b) drop-shadow(0 0 40px #ff6b6b);
+  }
+}
+
+/* クリア画面 */
+#clear-screen, #fail-screen {
+  background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 100%);
+  justify-content: center;
+  align-items: center;
+}
+
+.clear-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 20px;
+}
+
+.clear-title {
+  font-size: 48px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #51cf66, #69db7c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.fail-title {
+  font-size: 48px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff6b6b, #ff8787);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.fail-message {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.stars-display {
+  display: flex;
+  gap: 16px;
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.stars-display .star {
+  color: #666;
+  animation: starPop 0.5s ease-out forwards;
+}
+
+.stars-display .star.earned {
+  color: var(--warning);
+}
+
+@keyframes starPop {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.clear-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 18px;
+}
+
+.stat-label {
+  color: var(--text-secondary);
+}
+
+.stat-value {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.clear-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* 遊び方画面 */
+.how-to-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.how-to-section {
+  margin-bottom: 32px;
+}
+
+.how-to-section h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.how-to-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.how-to-section li {
+  padding: 8px 0;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* チェックマーク */
+.check-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 100px;
+  height: 100px;
+  pointer-events: none;
+  z-index: 100;
+  animation: checkMarkPop 0.6s ease-out forwards;
+}
+
+.check-mark::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #51cf66, #69db7c);
+  box-shadow: 0 0 40px rgba(81, 207, 102, 0.8);
+}
+
+.check-mark::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 25px;
+  height: 50px;
+  border: solid white;
+  border-width: 0 8px 8px 0;
+  animation: checkMarkDraw 0.3s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+@keyframes checkMarkPop {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes checkMarkDraw {
+  0% {
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    height: 50px;
+    opacity: 1;
+  }
+}

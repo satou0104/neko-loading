@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>猫の手ローディング</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ホーム画面 -->
+  <div id="home-screen" class="screen active no-transition">
+    <div class="home-content">
+      <!-- ロゴとアニメーション -->
+      <div class="home-animation">
+        <canvas id="home-canvas" width="300" height="300"></canvas>
+      </div>
+      
+      <div class="logo-container">
+        <h1 class="app-logo">ネコローディング</h1>
+        <p class="app-subtitle">Neko Loading</p>
+      </div>
+      
+      <button class="btn-primary btn-large" id="btn-play">PLAY</button>
+      
+      <button class="btn-secondary" id="btn-how-to-play">遊び方</button>
+      
+      <div class="progress-info">
+        <span id="clear-count">0</span> / 30 ステージクリア
+      </div>
+    </div>
+  </div>
+
+  <!-- ステージ選択画面 -->
+  <div id="stage-select-screen" class="screen">
+    <div class="header">
+      <button class="btn-icon" id="btn-back-from-select">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <h2 class="header-title">ステージ選択</h2>
+      <div class="btn-icon-placeholder"></div>
+    </div>
+    
+    <div class="stage-grid" id="stage-grid"></div>
+  </div>
+
+  <!-- ゲーム画面 -->
+  <div id="game-screen" class="screen">
+    <div class="header">
+      <button class="btn-icon" id="btn-back-from-game">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <h2 class="header-title" id="stage-title">ステージ 1</h2>
+      <button class="btn-icon" id="btn-reset">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M1 4v6h6M23 20v-6h-6"/>
+          <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="game-info">
+      <div class="info-item">
+        <span class="info-label">ミス</span>
+        <span class="info-value" id="miss-count">0</span>
+      </div>
+    </div>
+    
+    <div class="game-area" id="game-area">
+      <canvas id="game-canvas"></canvas>
+    </div>
+    
+    <!-- 画面下部の猫の手ボタン -->
+    <div class="neko-buttons" id="neko-buttons">
+      <button class="neko-button" data-neko-id="1">
+        <img src="../猫の手1.png" alt="猫の手1">
+      </button>
+      <button class="neko-button" data-neko-id="2">
+        <img src="../猫の手2.png" alt="猫の手2">
+      </button>
+      <button class="neko-button" data-neko-id="3">
+        <img src="../猫の手3.png" alt="猫の手3">
+      </button>
+      <button class="neko-button" data-neko-id="4">
+        <img src="../猫の手4.png" alt="猫の手4">
+      </button>
+      <button class="neko-button" data-neko-id="5">
+        <img src="../猫の手5.png" alt="猫の手5">
+      </button>
+    </div>
+    
+    <div class="game-instruction">
+      正しい猫の手をタップして追い払え！
+    </div>
+  </div>
+
+  <!-- クリア画面 -->
+  <div id="clear-screen" class="screen">
+    <div class="clear-content">
+      <h2 class="clear-title">CLEAR!</h2>
+      
+      <div class="stars-display" id="stars-display">
+        <div class="star">★</div>
+        <div class="star">★</div>
+        <div class="star">★</div>
+      </div>
+      
+      <div class="clear-stats">
+        <div class="stat-item">
+          <span class="stat-label">スコア</span>
+          <span class="stat-value" id="clear-score">100</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">ミス</span>
+          <span class="stat-value" id="clear-miss">2</span>
+        </div>
+      </div>
+      
+      <div class="clear-buttons">
+        <button class="btn-primary" id="btn-next-stage">次のステージ</button>
+        <button class="btn-secondary" id="btn-to-select">ステージ選択</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 失敗画面 -->
+  <div id="fail-screen" class="screen">
+    <div class="clear-content">
+      <h2 class="fail-title">FAILED</h2>
+      
+      <p class="fail-message">ミスが多すぎました</p>
+      
+      <div class="clear-buttons">
+        <button class="btn-primary" id="btn-retry">リトライ</button>
+        <button class="btn-secondary" id="btn-to-select-fail">ステージ選択</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 遊び方画面 -->
+  <div id="how-to-play-screen" class="screen">
+    <div class="header">
+      <button class="btn-icon" id="btn-back-from-how">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <h2 class="header-title">遊び方</h2>
+      <div class="btn-icon-placeholder"></div>
+    </div>
+    
+    <div class="how-to-content">
+      <div class="how-to-section">
+        <h3>基本ルール</h3>
+        <ul>
+          <li>画面下に5本の猫の手ボタンが表示される</li>
+          <li>画面上のスピナーに向かって猫の手が伸びてくる</li>
+          <li>伸びてくる猫の手と同じ種類のボタンをタップ</li>
+          <li>正しくタップすると猫の手が引っ込む</li>
+          <li>間違った猫の手をタップするとミス</li>
+          <li>スピナーに到達されるとミス</li>
+          <li>一定数クリアでステージクリア</li>
+        </ul>
+      </div>
+      
+      <div class="how-to-section">
+        <h3>星評価</h3>
+        <ul>
+          <li>★★★ ミス0回</li>
+          <li>★★ ミス1～2回</li>
+          <li>★ ミス3～5回</li>
+        </ul>
+      </div>
+      
+      <div class="how-to-section">
+        <h3>コツ</h3>
+        <ul>
+          <li>猫の手の模様をよく見て判別する</li>
+          <li>焦らず正確にタップする</li>
+          <li>ステージが進むと出現速度が上がる</li>
+        </ul>
+      </div>
+      
+      <button class="btn-primary" id="btn-start-from-how">ゲームスタート</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/@capacitor/core@7/dist/native-bridge.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

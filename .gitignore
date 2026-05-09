@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# iOS
+ios/App/Pods/
+ios/App/build/
+DerivedData/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+
+# Certificates
+*.key
+*.p12
+*.pem
+*.cer
+*.mobileprovision
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

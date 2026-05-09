@@ -1,0 +1,23 @@
+{
+  "name": "spinner-drop",
+  "version": "1.0.0",
+  "description": "Spinner Drop - Timing Puzzle Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "game",
+    "puzzle",
+    "timing",
+    "spinner"
+  ],
+  "author": "satou0104",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/cli": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/ios": "^7.0.0",
+    "@capacitor-community/admob": "^7.0.3"
+  }
+}

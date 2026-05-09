@@ -1,0 +1,10 @@
+{
+  "appId": "com.satou0104.spinnerdrop",
+  "appName": "スピナー・ドロップ",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "ios": {
+    "contentInset": "always",
+    "backgroundColor": "#0a0a0f"
+  }
+}
