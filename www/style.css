@@ -346,17 +346,16 @@ html, body {
   align-items: flex-end;
   padding: 0;
   background: transparent;
-  gap: 4px;
-  height: 180px;
+  gap: 0;
+  height: 260px;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
 
 .neko-button {
-  width: 100%;
-  max-width: 120px;
-  height: 350px;
+  flex: 1;
+  height: 600px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -366,7 +365,7 @@ html, body {
   align-items: flex-end;
   justify-content: center;
   position: relative;
-  margin-bottom: -170px;
+  margin-bottom: -340px;
 }
 
 .neko-button:active {
