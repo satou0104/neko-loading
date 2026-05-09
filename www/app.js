@@ -227,7 +227,6 @@ async function startStage(stageId) {
   
   // UI更新
   document.getElementById('stage-title').textContent = 'ステージ ' + stageId;
-  document.getElementById('miss-count').textContent = '0';
   
   // Canvas初期化
   initCanvas();
@@ -277,6 +276,18 @@ function drawSpinner() {
   ctx.shadowColor = '#ffffff';
   ctx.fillText(percentage + '%', spinner.x, spinner.y);
   ctx.shadowBlur = 0;
+
+  // ミスをスピナー右上に表示
+  const missX = spinner.x + spinner.radius + spinner.dotRadius + 16;
+  const missY = spinner.y - spinner.radius - spinner.dotRadius - 8;
+  ctx.font = 'bold 13px -apple-system, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.6)';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('ミス', missX, missY);
+  ctx.font = 'bold 22px -apple-system, sans-serif';
+  ctx.fillStyle = missCount >= 7 ? '#ff6b6b' : '#ffffff';
+  ctx.fillText(missCount, missX, missY + 20);
 }
 
 // 猫の手を出現させる
@@ -428,7 +439,6 @@ function addScore() {
 // ミス追加
 function addMiss() {
   missCount++;
-  document.getElementById('miss-count').textContent = missCount;
   
   // 失敗判定（ミス10回以上）
   if (missCount >= 10) {
