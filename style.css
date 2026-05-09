@@ -320,13 +320,19 @@ html, body {
 }
 
 .game-instruction {
-  padding: 16px;
+  position: relative;
+  z-index: 10;
+  padding: 16px 40px;
   text-align: center;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
   color: #ffffff;
-  background: rgba(102, 126, 234, 0.2);
-  border-top: 1px solid rgba(102, 126, 234, 0.3);
+  background: rgba(26, 26, 46, 0.95);
+  border: 2px solid rgba(100, 216, 203, 0.3);
+  border-radius: 50px;
+  margin: -30px 20px 20px 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.05em;
 }
 
 /* 猫の手ボタン */
@@ -335,11 +341,12 @@ html, body {
   justify-content: space-around;
   align-items: flex-end;
   padding: 0;
-  background: rgba(26, 26, 46, 0.8);
+  background: transparent;
   gap: 4px;
-  height: 180px;
-  overflow: hidden;
+  height: 200px;
+  overflow: visible;
   position: relative;
+  z-index: 1;
 }
 
 .neko-button {
@@ -355,7 +362,7 @@ html, body {
   align-items: flex-end;
   justify-content: center;
   position: relative;
-  margin-bottom: -170px; /* 下部分を画面外に（画像の切れ目を隠す） */
+  margin-bottom: -150px;
 }
 
 .neko-button:active {
