@@ -363,7 +363,7 @@ html, body {
 }
 
 .neko-button {
-  flex: 0 0 38vw;
+  flex: 0 0 32vw;
   height: 76vw;
   max-height: 400px;
   border: none;
