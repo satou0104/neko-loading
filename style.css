@@ -58,7 +58,7 @@ html, body {
 
 /* ホーム画面 */
 #home-screen {
-  background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 100%);
+  background: #000000;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -69,7 +69,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
   padding: 20px;
   position: relative;
   z-index: 1;
@@ -96,12 +96,10 @@ html, body {
 }
 
 .app-logo {
-  font-size: 32px;
-  font-weight: 300;
-  letter-spacing: 0.05em;
-  background: linear-gradient(135deg, #64d8cb, #8b9dc3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 36px;
+  font-weight: 200;
+  letter-spacing: 0.15em;
+  color: #ffffff;
   margin-bottom: 8px;
   line-height: 1.2;
   white-space: nowrap;
@@ -110,25 +108,24 @@ html, body {
 .app-subtitle {
   font-size: 11px;
   font-weight: 300;
-  color: #8b9dc3;
-  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.4em;
   text-transform: uppercase;
-  opacity: 0.6;
 }
 
 .progress-info {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 300;
-  color: #8b9dc3;
+  color: rgba(255, 255, 255, 0.4);
   margin-top: 0;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-align: center;
 }
 
 #clear-count {
-  color: #64d8cb;
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 /* ボタン */
@@ -137,18 +134,18 @@ html, body {
   border: none;
   border-radius: 16px;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
   max-width: 400px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
 }
 
 .btn-primary:active {
@@ -156,22 +153,22 @@ html, body {
 }
 
 .btn-large {
-  font-size: 22px;
+  font-size: 20px;
   padding: 20px 60px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  font-weight: 500;
+  letter-spacing: 0.25em;
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
-  border: 1px solid rgba(139, 157, 195, 0.3);
-  font-weight: 400;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 300;
 }
 
 .btn-secondary:active {
   transform: scale(0.98);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* ヘッダー */

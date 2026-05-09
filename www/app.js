@@ -603,14 +603,12 @@ function initHomeAnimation() {
       const dotX = centerX + Math.cos(angle) * radius;
       const dotY = centerY + Math.sin(angle) * radius;
       
-      if (i % 2 === 0) {
-        ctx.fillStyle = '#64d8cb';
-        ctx.shadowBlur = 20;
-        ctx.shadowColor = '#64d8cb';
-      } else {
-        ctx.fillStyle = '#8b9dc3';
-        ctx.shadowBlur = 20;
-        ctx.shadowColor = '#8b9dc3';
+      // 白→グレーのグラデーション（先頭が白く輝く）
+      const brightness = Math.floor(255 * (0.15 + 0.85 * (i / dots)));
+      ctx.fillStyle = `rgb(${brightness}, ${brightness}, ${brightness})`;
+      if (i >= dots - 2) {
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = '#ffffff';
       }
       
       ctx.beginPath();
