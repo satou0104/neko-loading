@@ -364,9 +364,7 @@ html, body {
 
 .neko-button {
   flex: 0 0 38vw;
-  max-width: 200px;
-  height: 76vw; /* 幅の2倍の高さ（38vw × 2） */
-  max-height: 500px;
+  height: 76vw;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -376,7 +374,7 @@ html, body {
   align-items: flex-end;
   justify-content: center;
   position: relative;
-  margin-bottom: -52vw; /* 高さ76vw - 表示したい24vw */
+  margin-bottom: -52vw;
   scroll-snap-align: center;
 }
 
