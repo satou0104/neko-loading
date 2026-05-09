@@ -40,11 +40,11 @@ let nekoSpawnInterval = 120;
 // 猫の手の画像（1-2～5-2.png）
 const nekoImages = [];
 const nekoImagePaths = [
-  '猫の手1-2.png',
-  '猫の手2-2.png',
-  '猫の手3-2.png',
-  '猫の手4-2.png',
-  '猫の手5-2.png'
+  'neko1-2.png',
+  'neko2-2.png',
+  'neko3-2.png',
+  'neko4-2.png',
+  'neko5-2.png'
 ];
 
 // 乱数生成（固定シード）
@@ -189,7 +189,7 @@ function loadNekoImages() {
         img.onerror = () => {
           resolve();
         };
-        img.src = './' + path;
+        img.src = path;
       });
     })
   );
