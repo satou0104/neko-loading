@@ -347,8 +347,7 @@ html, body {
   padding: 0;
   background: transparent;
   gap: 0;
-  height: 35vw;
-  max-height: 260px;
+  height: 260px;
   overflow: hidden;
   position: relative;
   z-index: 1;
@@ -356,8 +355,7 @@ html, body {
 
 .neko-button {
   flex: 1;
-  height: 80vw;
-  max-height: 600px;
+  height: 600px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -367,11 +365,11 @@ html, body {
   align-items: flex-end;
   justify-content: center;
   position: relative;
-  margin-bottom: -45vw;
+  margin-bottom: -340px;
 }
 
 .neko-button:active {
-  transform: translateY(-10px);
+  transform: translateY(-10px); /* 押すと少し上に */
 }
 
 .neko-button img {
