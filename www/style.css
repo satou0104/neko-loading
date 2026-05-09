@@ -355,6 +355,7 @@ html, body {
 
 .neko-button {
   flex: 1;
+  min-width: 0;
   height: 600px;
   border: none;
   background: transparent;
@@ -369,13 +370,14 @@ html, body {
 }
 
 .neko-button:active {
-  transform: translateY(-10px); /* 押すと少し上に */
+  transform: translateY(-10px);
 }
 
 .neko-button img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover; /* containからcoverに変更 - 幅に合わせて拡大 */
+  object-position: top; /* 上部（肉球側）を表示 */
   pointer-events: none;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
