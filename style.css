@@ -347,7 +347,7 @@ html, body {
   padding: 0;
   background: transparent;
   gap: 0;
-  height: 35vw;
+  height: 42vw;
   max-height: 240px;
   overflow-x: auto;
   overflow-y: hidden;
@@ -375,7 +375,7 @@ html, body {
   align-items: flex-end;
   justify-content: center;
   position: relative;
-  margin-bottom: -41vw; /* 76vw - 35vw */
+  margin-bottom: -34vw; /* 76vw - 42vw */
   scroll-snap-align: center;
 }
 
