@@ -339,30 +339,20 @@ html, body {
 /* 猫の手ボタン */
 .neko-buttons {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: flex-end;
   padding: 0;
   background: transparent;
   gap: 0;
   height: 42vw;
-  max-height: 240px;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
   position: relative;
   z-index: 1;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.neko-buttons::-webkit-scrollbar {
-  display: none;
 }
 
 .neko-button {
-  flex: 0 0 32vw;
+  flex: 1;
   height: 76vw;
-  max-height: 400px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -372,8 +362,7 @@ html, body {
   align-items: flex-end;
   justify-content: center;
   position: relative;
-  margin-bottom: -34vw; /* 76vw - 42vw */
-  scroll-snap-align: center;
+  margin-bottom: -34vw;
 }
 
 .neko-button:active {

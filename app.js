@@ -37,13 +37,12 @@ let nekoHands = [];
 let nekoSpawnTimer = 0;
 let nekoSpawnInterval = 120;
 
-// 猫の手の画像（1-2～5-2.png）
+// 猫の手の画像（1-2～3-2.png、4を除外）
 const nekoImages = [];
 const nekoImagePaths = [
   'neko1-2.png',
   'neko2-2.png',
   'neko3-2.png',
-  'neko4-2.png',
   'neko5-2.png'
 ];
 
@@ -321,8 +320,8 @@ function spawnNekoHand() {
   // 回転角度（肉球が進行方向を向くように）
   const rotation = angle - 90;
   
-  // ランダムな猫の手の種類（1～5）
-  const nekoType = Math.floor(rng() * 5) + 1;
+  // ランダムな猫の手の種類（1～4、4番はneko5に対応）
+  const nekoType = Math.floor(rng() * 4) + 1;
   
   nekoHands.push({
     x: startX,
