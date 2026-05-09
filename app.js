@@ -340,10 +340,14 @@ function spawnNekoHand() {
 
 // 猫の手の更新
 function updateNekoHands() {
-  nekoHands.forEach((neko, index) => {
-    if (!neko.active) return;
+  // 後ろから処理してspliceのインデックスずれを防ぐ
+  for (let index = nekoHands.length - 1; index >= 0; index--) {
+    const neko = nekoHands[index];
+    if (!neko.active) {
+      nekoHands.splice(index, 1);
+      continue;
+    }
     
-    // 目標地点に向かって移動
     const dx = neko.targetX - neko.x;
     const dy = neko.targetY - neko.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
@@ -352,29 +356,22 @@ function updateNekoHands() {
       neko.x += (dx / distance) * neko.speed;
       neko.y += (dy / distance) * neko.speed;
       
-      // スピナーの周り（ドットの位置）に到達したかチェック
       const distanceToCenter = Math.sqrt(
         (neko.x - spinner.x) ** 2 + 
         (neko.y - spinner.y) ** 2
       );
       
-      // スピナーの半径（ドットの位置）に到達したらダメージ
       if (distanceToCenter <= spinner.radius + spinner.dotRadius + 20) {
-        neko.active = false;
         nekoHands.splice(index, 1);
-        
-        // ローディングを減らす
         loadingPercent = Math.max(0, loadingPercent - 15);
         addMiss();
       }
     } else {
-      // 中心に到達 → ダメージ
-      neko.active = false;
       nekoHands.splice(index, 1);
       loadingPercent = Math.max(0, loadingPercent - 15);
       addMiss();
     }
-  });
+  }
 }
 
 // 猫の手の描画
@@ -677,8 +674,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // 猫の手ボタンのタップ
   document.querySelectorAll('.neko-button').forEach(button => {
-    button.addEventListener('click', (e) => {
+    let touched = false;
+    button.addEventListener('touchstart', (e) => {
       e.preventDefault();
+      touched = true;
+      const nekoType = parseInt(button.dataset.nekoId);
+      onNekoButtonTap(nekoType);
+    }, { passive: false });
+    button.addEventListener('click', (e) => {
+      if (touched) { touched = false; return; } // touchstartで処理済みならスキップ
       const nekoType = parseInt(button.dataset.nekoId);
       onNekoButtonTap(nekoType);
     });
