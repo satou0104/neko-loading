@@ -327,7 +327,7 @@ html, body {
   font-size: 15px;
   font-weight: 500;
   color: #ffffff;
-  background: transparent;
+  background: rgba(26, 26, 46, 0.95);
   border: 2px solid rgba(100, 216, 203, 0.5);
   border-radius: 50px;
   margin: -30px 20px 20px 20px;
