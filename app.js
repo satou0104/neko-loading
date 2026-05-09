@@ -667,14 +667,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // 猫の手ボタンのタップ
   document.querySelectorAll('.neko-button').forEach(button => {
     let touched = false;
-    button.addEventListener('touchstart', (e) => {
+    button.addEventListener('touchend', (e) => {
       e.preventDefault();
       touched = true;
       const nekoType = parseInt(button.dataset.nekoId);
       onNekoButtonTap(nekoType);
     }, { passive: false });
     button.addEventListener('click', (e) => {
-      if (touched) { touched = false; return; } // touchstartで処理済みならスキップ
+      if (touched) { touched = false; return; }
       const nekoType = parseInt(button.dataset.nekoId);
       onNekoButtonTap(nekoType);
     });
