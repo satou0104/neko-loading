@@ -189,7 +189,7 @@ function loadNekoImages() {
         img.onerror = () => {
           resolve();
         };
-        img.src = '../' + path;
+        img.src = './' + path;
       });
     })
   );
