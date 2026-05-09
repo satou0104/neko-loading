@@ -347,7 +347,7 @@ html, body {
   padding: 0;
   background: transparent;
   gap: 0;
-  height: 30vw;
+  height: 24vw; /* ボタンの表示部分と同じ */
   max-height: 240px;
   overflow-x: auto;
   overflow-y: hidden;
@@ -359,22 +359,25 @@ html, body {
 }
 
 .neko-buttons::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome/Safari */
 }
 
 .neko-button {
   flex: 0 0 38vw;
   max-width: 200px;
-  height: 30vw;
-  max-height: 240px;
+  height: 76vw; /* 幅の2倍の高さ（38vw × 2） */
+  max-height: 500px;
   border: none;
   background: transparent;
   cursor: pointer;
   transition: transform 0.2s ease;
   padding: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   position: relative;
+  margin-bottom: -52vw; /* 高さ76vw - 表示したい24vw */
   scroll-snap-align: center;
-  overflow: hidden;
 }
 
 .neko-button:active {
@@ -382,12 +385,8 @@ html, body {
 }
 
 .neko-button img {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
   width: 100%;
-  height: 250%; /* 実際の画像は表示エリアの2.5倍の高さ */
+  height: 100%;
   object-fit: cover;
   object-position: top;
   pointer-events: none;
