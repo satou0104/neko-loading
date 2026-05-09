@@ -73,15 +73,14 @@ html, body {
   padding: 20px;
   position: relative;
   z-index: 1;
-  max-width: 500px;
+  max-width: 400px;
   width: 100%;
 }
 
 .home-animation {
   position: relative;
-  width: 140px;
-  height: 140px;
-  margin-bottom: 0;
+  width: 120px;
+  height: 120px;
 }
 
 #home-canvas {

@@ -576,7 +576,7 @@ function initHomeAnimation() {
   if (!canvas) return;
   
   const dpr = window.devicePixelRatio || 1;
-  const displaySize = 300;
+  const displaySize = 120;
   
   canvas.width = displaySize * dpr;
   canvas.height = displaySize * dpr;
