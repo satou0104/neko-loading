@@ -342,31 +342,40 @@ html, body {
 /* 猫の手ボタン */
 .neko-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: flex-end;
   padding: 0;
   background: transparent;
   gap: 0;
   height: 260px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   position: relative;
   z-index: 1;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.neko-buttons::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .neko-button {
-  flex: 1;
-  min-width: 0;
+  flex: 0 0 38vw; /* 画面幅の38%で固定 */
+  max-width: 200px;
   height: 600px;
   border: none;
   background: transparent;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease;
   padding: 0;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   position: relative;
   margin-bottom: -340px;
+  scroll-snap-align: center;
 }
 
 .neko-button:active {
@@ -376,8 +385,8 @@ html, body {
 .neko-button img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* containからcoverに変更 - 幅に合わせて拡大 */
-  object-position: top; /* 上部（肉球側）を表示 */
+  object-fit: cover;
+  object-position: top;
   pointer-events: none;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
