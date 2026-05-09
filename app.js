@@ -576,7 +576,7 @@ function initHomeAnimation() {
   if (!canvas) return;
   
   const dpr = window.devicePixelRatio || 1;
-  const displaySize = 120;
+  const displaySize = 160;
   
   canvas.width = displaySize * dpr;
   canvas.height = displaySize * dpr;
@@ -588,9 +588,9 @@ function initHomeAnimation() {
   
   const centerX = displaySize / 2;
   const centerY = displaySize / 2;
-  const radius = 75;
+  const radius = 55;
   const dots = 12;
-  const dotRadius = 14;
+  const dotRadius = 10;
   let rotation = 0;
   
   function drawHomeSpinner() {
