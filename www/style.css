@@ -347,11 +347,10 @@ html, body {
   padding: 0;
   background: transparent;
   gap: 4px;
-  height: 150px;
-  overflow: visible;
+  height: 180px;
+  overflow: hidden;
   position: relative;
   z-index: 1;
-  margin-bottom: -30px;
 }
 
 .neko-button {
@@ -367,7 +366,7 @@ html, body {
   align-items: flex-end;
   justify-content: center;
   position: relative;
-  margin-bottom: -200px;
+  margin-bottom: -170px;
 }
 
 .neko-button:active {
