@@ -347,14 +347,15 @@ html, body {
   padding: 0;
   background: transparent;
   gap: 0;
-  height: 260px;
+  height: 24vw; /* ボタンの表示部分と同じ */
+  max-height: 240px;
   overflow-x: auto;
   overflow-y: hidden;
   position: relative;
   z-index: 1;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
 
 .neko-buttons::-webkit-scrollbar {
@@ -362,9 +363,10 @@ html, body {
 }
 
 .neko-button {
-  flex: 0 0 38vw; /* 画面幅の38%で固定 */
+  flex: 0 0 38vw;
   max-width: 200px;
-  height: 500px;
+  height: 76vw; /* 幅の2倍の高さ（38vw × 2） */
+  max-height: 500px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -374,7 +376,7 @@ html, body {
   align-items: flex-end;
   justify-content: center;
   position: relative;
-  margin-bottom: -260px;
+  margin-bottom: -52vw; /* 高さ76vw - 表示したい24vw */
   scroll-snap-align: center;
 }
 
