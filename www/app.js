@@ -178,15 +178,18 @@ function initCanvas() {
 
 // 猫の手画像の読み込み
 function loadNekoImages() {
+  console.log('Loading neko images...');
   return Promise.all(
     nekoImagePaths.map((path, index) => {
       return new Promise((resolve) => {
         const img = new Image();
         img.onload = () => {
+          console.log('Loaded:', path);
           nekoImages[index] = img;
           resolve();
         };
-        img.onerror = () => {
+        img.onerror = (e) => {
+          console.error('Failed to load:', path, e);
           resolve();
         };
         img.src = path;
