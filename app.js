@@ -166,9 +166,19 @@ function initCanvas() {
   
   const gameArea = document.getElementById('game-area');
   const size = Math.min(gameArea.clientWidth, gameArea.clientHeight) - 40;
+  const dpr = window.devicePixelRatio || 1;
   
-  canvas.width = size;
-  canvas.height = size;
+  // 実際のピクセル数をdprに合わせて拡大
+  canvas.width = size * dpr;
+  canvas.height = size * dpr;
+  
+  // CSSサイズは元のまま
+  canvas.style.width = size + 'px';
+  canvas.style.height = size + 'px';
+  
+  // 描画をdpr倍にスケール
+  ctx.scale(dpr, dpr);
+  
   canvasWidth = size;
   canvasHeight = size;
   
@@ -565,9 +575,19 @@ function initHomeAnimation() {
   const canvas = document.getElementById('home-canvas');
   if (!canvas) return;
   
+  const dpr = window.devicePixelRatio || 1;
+  const displaySize = 300;
+  
+  canvas.width = displaySize * dpr;
+  canvas.height = displaySize * dpr;
+  canvas.style.width = displaySize + 'px';
+  canvas.style.height = displaySize + 'px';
+  
   const ctx = canvas.getContext('2d');
-  const centerX = canvas.width / 2;
-  const centerY = canvas.height / 2;
+  ctx.scale(dpr, dpr);
+  
+  const centerX = displaySize / 2;
+  const centerY = displaySize / 2;
   const radius = 75;
   const dots = 12;
   const dotRadius = 14;
