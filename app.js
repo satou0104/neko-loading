@@ -253,21 +253,17 @@ async function startStage(stageId) {
 function drawSpinner() {
   const angleStep = (Math.PI * 2) / spinner.dots;
   
-  // ドットを描画
   for (let i = 0; i < spinner.dots; i++) {
     const angle = spinner.rotation + i * angleStep;
-    
     const dotX = spinner.x + Math.cos(angle) * spinner.radius;
     const dotY = spinner.y + Math.sin(angle) * spinner.radius;
     
-    if (i % 2 === 0) {
-      ctx.fillStyle = '#64d8cb';
-      ctx.shadowBlur = 20;
-      ctx.shadowColor = '#64d8cb';
-    } else {
-      ctx.fillStyle = '#8b9dc3';
-      ctx.shadowBlur = 20;
-      ctx.shadowColor = '#8b9dc3';
+    // 白→グレーのグラデーション（先頭が白く輝く）
+    const brightness = Math.floor(255 * (0.15 + 0.85 * (i / spinner.dots)));
+    ctx.fillStyle = `rgb(${brightness}, ${brightness}, ${brightness})`;
+    if (i >= spinner.dots - 2) {
+      ctx.shadowBlur = 15;
+      ctx.shadowColor = '#ffffff';
     }
     
     ctx.beginPath();
