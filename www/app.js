@@ -332,41 +332,30 @@ function spawnNekoHand() {
     speed: config.nekoSpeed,
     type: nekoType,
     imageIndex: nekoType - 1,
-    size: 300, // サイズを大きく（200→300）
-    active: true,
+    size: 300,
     rotation: rotation
   });
 }
 
 // 猫の手の更新
 function updateNekoHands() {
-  // 後ろから処理してspliceのインデックスずれを防ぐ
   for (let index = nekoHands.length - 1; index >= 0; index--) {
     const neko = nekoHands[index];
-    if (!neko.active) {
-      nekoHands.splice(index, 1);
-      continue;
-    }
     
     const dx = neko.targetX - neko.x;
     const dy = neko.targetY - neko.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
     
-    if (distance > 5) {
-      neko.x += (dx / distance) * neko.speed;
-      neko.y += (dy / distance) * neko.speed;
-      
-      const distanceToCenter = Math.sqrt(
-        (neko.x - spinner.x) ** 2 + 
-        (neko.y - spinner.y) ** 2
-      );
-      
-      if (distanceToCenter <= spinner.radius + spinner.dotRadius + 20) {
-        nekoHands.splice(index, 1);
-        loadingPercent = Math.max(0, loadingPercent - 15);
-        addMiss();
-      }
-    } else {
+    neko.x += (dx / distance) * neko.speed;
+    neko.y += (dy / distance) * neko.speed;
+    
+    const distanceToCenter = Math.sqrt(
+      (neko.x - spinner.x) ** 2 + 
+      (neko.y - spinner.y) ** 2
+    );
+    
+    // スピナーに到達したらダメージ
+    if (distanceToCenter <= spinner.radius + spinner.dotRadius + 20) {
       nekoHands.splice(index, 1);
       loadingPercent = Math.max(0, loadingPercent - 15);
       addMiss();
@@ -377,18 +366,13 @@ function updateNekoHands() {
 // 猫の手の描画
 function drawNekoHands() {
   nekoHands.forEach(neko => {
-    if (!neko.active) return;
-    
     const img = nekoImages[neko.imageIndex];
     if (img && img.complete) {
       ctx.save();
-      
       ctx.translate(neko.x, neko.y);
       ctx.rotate((neko.rotation * Math.PI) / 180);
-      
       ctx.globalAlpha = 0.95;
       ctx.drawImage(img, -neko.size / 2, -neko.size / 2, neko.size, neko.size);
-      
       ctx.restore();
     }
   });
@@ -396,22 +380,30 @@ function drawNekoHands() {
 
 // 猫の手ボタンをタップ
 function onNekoButtonTap(nekoType) {
-  // 対応する猫の手を探す
-  let found = false;
-  
-  for (let i = nekoHands.length - 1; i >= 0; i--) {
+  if (!gameRunning) return;
+
+  // 対応する猫の手を探す（最も近いものを優先）
+  let foundIndex = -1;
+  let minDistance = Infinity;
+
+  for (let i = 0; i < nekoHands.length; i++) {
     const neko = nekoHands[i];
-    if (neko.active && neko.type === nekoType) {
-      // 正解！猫の手を追い払った
-      neko.active = false;
-      nekoHands.splice(i, 1);
-      flashButton(nekoType, true);
-      found = true;
-      break;
+    if (neko.type === nekoType) {
+      const dist = Math.sqrt(
+        (neko.x - spinner.x) ** 2 + (neko.y - spinner.y) ** 2
+      );
+      if (dist < minDistance) {
+        minDistance = dist;
+        foundIndex = i;
+      }
     }
   }
-  
-  if (!found) {
+
+  if (foundIndex !== -1) {
+    // 正解！最もスピナーに近い猫の手を消す
+    nekoHands.splice(foundIndex, 1);
+    flashButton(nekoType, true);
+  } else {
     // 不正解（お手付き）
     addMiss();
     flashButton(nekoType, false);
