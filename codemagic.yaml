@@ -23,6 +23,10 @@ workflows:
       - name: Capacitor sync
         script: |
           npx cap sync ios
+      - name: CocoaPods install
+        script: |
+          cd ios/App
+          pod install
       - name: Increment build number
         script: |
           cd ios/App
