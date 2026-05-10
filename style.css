@@ -183,9 +183,7 @@ html, body {
 .header-title {
   font-size: 18px;
   font-weight: 600;
-  background: var(--primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
 }
 
 .btn-icon {
