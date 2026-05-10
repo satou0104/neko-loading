@@ -1,6 +1,7 @@
 workflows:
   ios-release:
-    name: iOS Release
+    name: ネコローディング iOS
+    max_build_duration: 120
     instance_type: mac_mini_m1
     integrations:
       app_store_connect: codemagic
@@ -11,26 +12,30 @@ workflows:
       vars:
         XCODE_WORKSPACE: "ios/App/App.xcworkspace"
         XCODE_SCHEME: "App"
+      xcode: latest
+      cocoapods: default
     scripts:
       - name: Install dependencies
+        script: npm install
+      - name: Copy www files to root (Codemagic workaround)
         script: |
-          npm install
-      - name: Copy www files
-        script: |
-          cp index.html www/index.html
-          cp app.js www/app.js
-          cp style.css www/style.css
+          cp www/index.html index.html
+          cp www/app.js app.js
+          cp www/style.css style.css
       - name: Capacitor sync
+        script: npx cap sync ios
+      - name: Set iOS deployment target
         script: |
-          npx cap sync ios
+          sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = [0-9.]*/IPHONEOS_DEPLOYMENT_TARGET = 14.0/g' ios/App/App.xcodeproj/project.pbxproj
       - name: CocoaPods install
-        script: |
-          cd ios/App
-          pod install
+        script: cd ios/App && pod install
       - name: Increment build number
         script: |
           cd ios/App
           agvtool new-version -all $(($(date +%s) / 60))
+      - name: Set up code signing settings on Xcode project
+        script: |
+          xcode-project use-profiles
       - name: Build iOS
         script: |
           xcode-project build-ipa \
@@ -38,6 +43,7 @@ workflows:
             --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
     publishing:
       app_store_connect:
         auth: integration
