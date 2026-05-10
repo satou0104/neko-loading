@@ -187,20 +187,12 @@ function initCanvas() {
 
 // 猫の手画像の読み込み
 function loadNekoImages() {
-  console.log('Loading neko images...');
   return Promise.all(
     nekoImagePaths.map((path, index) => {
       return new Promise((resolve) => {
         const img = new Image();
-        img.onload = () => {
-          console.log('Loaded:', path);
-          nekoImages[index] = img;
-          resolve();
-        };
-        img.onerror = (e) => {
-          console.error('Failed to load:', path, e);
-          resolve();
-        };
+        img.onload = () => { nekoImages[index] = img; resolve(); };
+        img.onerror = () => { resolve(); };
         img.src = path;
       });
     })
@@ -424,16 +416,6 @@ function flashButton(nekoType, correct) {
   }
 }
 
-// スコア追加
-function addScore() {
-  score++;
-  
-  // クリア判定
-  if (score >= targetScore) {
-    setTimeout(() => clearStage(), 500);
-  }
-}
-
 // ミス追加
 function addMiss() {
   missCount++;
@@ -528,7 +510,6 @@ function failStage() {
 
 // クリア画面表示
 function showClearScreen(stars, finalMiss) {
-  document.getElementById('clear-score').textContent = '100%';
   document.getElementById('clear-miss').textContent = finalMiss;
   
   // 星アニメーション

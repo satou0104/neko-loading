@@ -1,16 +1,17 @@
 {
-  "name": "spinner-drop",
+  "name": "neko-loading",
   "version": "1.0.0",
-  "description": "Spinner Drop - Timing Puzzle Game",
+  "description": "ネコローディング - 猫の手からスピナーを守るゲーム",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "game",
-    "puzzle",
-    "timing",
-    "spinner"
+    "cat",
+    "neko",
+    "loading",
+    "puzzle"
   ],
   "author": "satou0104",
   "license": "MIT",
