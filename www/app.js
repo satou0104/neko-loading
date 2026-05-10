@@ -21,7 +21,7 @@ const spinner = {
   radius: 75,
   dots: 12,
   rotation: 0,
-  speed: 0.02,
+  speed: 0.04,
   dotRadius: 14
 };
 
@@ -253,15 +253,19 @@ function drawSpinner() {
   const angleStep = (Math.PI * 2) / spinner.dots;
   
   for (let i = 0; i < spinner.dots; i++) {
-    const angle = spinner.rotation + i * angleStep;
+    // ドットの位置は固定
+    const angle = i * angleStep;
     const dotX = spinner.x + Math.cos(angle) * spinner.radius;
     const dotY = spinner.y + Math.sin(angle) * spinner.radius;
     
-    // 白→グレーのグラデーション（先頭が白く輝く）
-    const brightness = Math.floor(255 * (0.15 + 0.85 * (i / spinner.dots)));
+    // グラデーションだけが回転（逆方向・滑らか）
+    const gradientOffset = (1 - (i / spinner.dots) + spinner.rotation / (Math.PI * 2)) % 1;
+    const brightness = Math.floor(255 * (0.08 + 0.92 * gradientOffset));
     ctx.fillStyle = `rgb(${brightness}, ${brightness}, ${brightness})`;
-    if (i >= spinner.dots - 2) {
-      ctx.shadowBlur = 15;
+    
+    // 最も明るいドットに光彩
+    if (gradientOffset > 0.88) {
+      ctx.shadowBlur = 20;
       ctx.shadowColor = '#ffffff';
     }
     
@@ -583,15 +587,18 @@ function initHomeAnimation() {
     const angleStep = (Math.PI * 2) / dots;
     
     for (let i = 0; i < dots; i++) {
-      const angle = rotation + i * angleStep;
+      // ドットの位置は固定
+      const angle = i * angleStep;
       const dotX = centerX + Math.cos(angle) * radius;
       const dotY = centerY + Math.sin(angle) * radius;
       
-      // 白→グレーのグラデーション（先頭が白く輝く）
-      const brightness = Math.floor(255 * (0.15 + 0.85 * (i / dots)));
+      // グラデーションだけが回転（逆方向・滑らか）
+      const gradientOffset = (1 - (i / dots) + rotation / (Math.PI * 2)) % 1;
+      const brightness = Math.floor(255 * (0.08 + 0.92 * gradientOffset));
       ctx.fillStyle = `rgb(${brightness}, ${brightness}, ${brightness})`;
-      if (i >= dots - 2) {
-        ctx.shadowBlur = 15;
+      
+      if (gradientOffset > 0.88) {
+        ctx.shadowBlur = 20;
         ctx.shadowColor = '#ffffff';
       }
       
@@ -601,7 +608,7 @@ function initHomeAnimation() {
       ctx.shadowBlur = 0;
     }
     
-    rotation += 0.02;
+    rotation += 0.04;
     if (rotation > Math.PI * 2) {
       rotation -= Math.PI * 2;
     }
