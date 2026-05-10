@@ -1,8 +1,8 @@
 // Capacitor初期化
 const { Capacitor } = window;
 
-// 広告ID（本番用）
-const INTERSTITIAL_AD_ID = 'ca-app-pub-8707369701475326/2504085461';
+// 広告ID
+const INTERSTITIAL_AD_ID = 'ca-app-pub-8707369701475326/5045679829';
 
 // ゲーム状態
 let currentStage = 1;
