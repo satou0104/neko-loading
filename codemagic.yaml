@@ -18,9 +18,9 @@ workflows:
           npm install
       - name: Copy www files
         script: |
-          cp neko-loading/index.html neko-loading/www/index.html
-          cp neko-loading/app.js neko-loading/www/app.js
-          cp neko-loading/style.css neko-loading/www/style.css
+          cp index.html www/index.html
+          cp app.js www/app.js
+          cp style.css www/style.css
       - name: Capacitor sync
         script: |
           cd neko-loading
