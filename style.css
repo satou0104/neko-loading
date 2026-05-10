@@ -262,7 +262,7 @@ html, body {
 
 /* ゲーム画面 */
 #game-screen {
-  background: linear-gradient(180deg, #1a1a3e 0%, #2a2a4e 100%);
+  background: #3a3a4e;
 }
 
 .game-info {
@@ -294,7 +294,7 @@ html, body {
 .game-area {
   position: relative;
   flex: 1;
-  background: linear-gradient(180deg, #1a1a3e 0%, #2a2a4e 100%);
+  background: #3a3a4e;
   overflow: hidden;
   touch-action: none;
   display: flex;
