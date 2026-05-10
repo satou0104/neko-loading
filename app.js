@@ -1,8 +1,8 @@
 // Capacitor初期化
 const { Capacitor } = window;
 
-// 広告ID
-const INTERSTITIAL_AD_ID = 'ca-app-pub-8707369701475326/5045679829';
+// 広告ID（テスト用）
+const INTERSTITIAL_AD_ID = 'ca-app-pub-3940256099942544/4411468910';
 
 // ゲーム状態
 let currentStage = 1;
@@ -496,8 +496,8 @@ function clearStage() {
   // クリア画面表示
   showClearScreen(stars, missCount);
   
-  // 5ステージ連続クリアでインタースティシャル広告
-  if (consecutiveClear % 5 === 0) {
+  // 4プレイごとにインタースティシャル広告
+  if (consecutiveClear % 4 === 0) {
     setTimeout(() => showInterstitialAd(), 1000);
   }
 }
