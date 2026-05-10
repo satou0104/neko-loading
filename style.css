@@ -334,6 +334,21 @@ html, body {
   letter-spacing: 0.05em;
 }
 
+/* 波形の境界線 */
+.wave-divider {
+  width: 100%;
+  height: 30px;
+  margin-bottom: -2px;
+  background: transparent;
+  line-height: 0;
+}
+
+.wave-divider svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 /* 猫の手ボタン */
 .neko-buttons {
   display: flex;
