@@ -63,17 +63,10 @@ function generateStageConfig(stageId) {
   let spawnInterval = 120;
   let nekoSpeed = 2.0;
   
-  // 難易度調整（30ステージ）
-  if (stageId <= 10) {
-    spawnInterval = 150 - Math.floor(rng() * 30); // 120-150
-    nekoSpeed = 1.5;
-  } else if (stageId <= 20) {
-    spawnInterval = 100 - Math.floor(rng() * 30); // 70-100
-    nekoSpeed = 2.0;
-  } else {
-    spawnInterval = 60 - Math.floor(rng() * 20); // 40-60
-    nekoSpeed = 2.5;
-  }
+  // 難易度調整（30ステージ、段階的に難しくなる）
+  // ステージ1: 間隔150, 速度1.2 → ステージ30: 間隔40, 速度3.0
+  spawnInterval = 150 - Math.floor((stageId - 1) * (110 / 29)); // 150→40
+  nekoSpeed = 1.2 + (stageId - 1) * (1.8 / 29); // 1.2→3.0
   
   const speed = 0.015 + rng() * 0.02;
   
