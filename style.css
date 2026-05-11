@@ -350,12 +350,14 @@ html, body {
   width: 100%;
   text-align: center;
   color: #ffffff;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  opacity: 0.7;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: 'Helvetica Neue', 'Hiragino Sans', sans-serif;
+  letter-spacing: 0.15em;
+  opacity: 0.85;
   pointer-events: none;
   z-index: 3;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* 猫の手ボタン */
