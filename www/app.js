@@ -517,6 +517,10 @@ function clearStage() {
 // 失敗
 function failStage() {
   gameRunning = false;
+  consecutiveClear++;
+  if (consecutiveClear % 4 === 0) {
+    setTimeout(() => showInterstitialAd(), 1000);
+  }
   showScreen('fail-screen');
 }
 
