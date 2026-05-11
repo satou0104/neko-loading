@@ -260,7 +260,7 @@ html, body {
 
 /* ゲーム画面 */
 #game-screen {
-  background: #8a8a9e;
+  background: #7a8a6a;
 }
 
 .game-info {
@@ -292,7 +292,7 @@ html, body {
 .game-area {
   position: relative;
   flex: 1;
-  background: #8a8a9e;
+  background: #7a8a6a;
   overflow: hidden;
   touch-action: none;
   display: flex;
@@ -366,7 +366,7 @@ html, body {
   justify-content: space-around;
   align-items: flex-end;
   padding: 0;
-  background: #8a8a9e;
+  background: #7a8a6a;
   gap: 0;
   height: 42vw;
   overflow: hidden;
