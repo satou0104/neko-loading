@@ -335,7 +335,7 @@ html, body {
 }
 
 /* 棚 */
-.shelf-top, .shelf-bottom {
+.shelf-bottom {
   position: absolute;
   width: 100%;
   left: 0;

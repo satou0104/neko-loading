@@ -185,22 +185,14 @@ function initCanvas() {
     const canvasRect = canvasEl.getBoundingClientRect();
     const gameAreaRect = gameArea.getBoundingClientRect();
     const canvasOffsetTop = canvasRect.top - gameAreaRect.top;
-    const canvasOffsetLeft = canvasRect.left - gameAreaRect.left;
     
-    // スピナー中心のゲームエリア内での位置
     const spinnerCenterY = canvasOffsetTop + (canvasRect.height / 2);
-    const spawnDistance = canvasRect.height / 2; // Canvasの端
-
-    // 上の棚: 270度（真上）のスポーン位置
-    const shelfTop = document.getElementById('shelf-top');
-    if (shelfTop) {
-      shelfTop.style.top = (spinnerCenterY - spawnDistance - shelfTop.offsetHeight) + 'px';
-    }
+    const spawnDistance = canvasRect.height / 2;
 
     // 下の棚: 90度（真下）のスポーン位置
     const shelfBottom = document.getElementById('shelf-bottom');
     if (shelfBottom) {
-      shelfBottom.style.top = (spinnerCenterY + spawnDistance - shelfBottom.offsetHeight) + 'px';
+      shelfBottom.style.top = (spinnerCenterY + spawnDistance - shelfBottom.offsetHeight * 0.7) + 'px';
     }
   }, 50);
 }
