@@ -336,19 +336,11 @@ html, body {
 
 /* 棚 */
 .shelf-top, .shelf-bottom {
+  position: absolute;
   width: 100%;
-  display: block;
+  left: 0;
   pointer-events: none;
-  position: relative;
   z-index: 2;
-}
-
-.shelf-top {
-  margin-bottom: -20px;
-}
-
-.shelf-bottom {
-  margin-top: -20px;
 }
 
 /* 猫の手ボタン */

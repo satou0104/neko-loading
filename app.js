@@ -167,15 +167,10 @@ function initCanvas() {
   const size = Math.min(gameArea.clientWidth, gameArea.clientHeight) - 40;
   const dpr = window.devicePixelRatio || 1;
   
-  // 実際のピクセル数をdprに合わせて拡大
   canvas.width = size * dpr;
   canvas.height = size * dpr;
-  
-  // CSSサイズは元のまま
   canvas.style.width = size + 'px';
   canvas.style.height = size + 'px';
-  
-  // 描画をdpr倍にスケール
   ctx.scale(dpr, dpr);
   
   canvasWidth = size;
@@ -183,6 +178,31 @@ function initCanvas() {
   
   spinner.x = canvasWidth / 2;
   spinner.y = canvasHeight / 2;
+
+  // 棚の位置をスピナーのスポーン位置に合わせる
+  setTimeout(() => {
+    const canvasEl = document.getElementById('game-canvas');
+    const canvasRect = canvasEl.getBoundingClientRect();
+    const gameAreaRect = gameArea.getBoundingClientRect();
+    const canvasOffsetTop = canvasRect.top - gameAreaRect.top;
+    const canvasOffsetLeft = canvasRect.left - gameAreaRect.left;
+    
+    // スピナー中心のゲームエリア内での位置
+    const spinnerCenterY = canvasOffsetTop + (canvasRect.height / 2);
+    const spawnDistance = canvasRect.height / 2; // Canvasの端
+
+    // 上の棚: 270度（真上）のスポーン位置
+    const shelfTop = document.getElementById('shelf-top');
+    if (shelfTop) {
+      shelfTop.style.top = (spinnerCenterY - spawnDistance - shelfTop.offsetHeight / 2) + 'px';
+    }
+
+    // 下の棚: 90度（真下）のスポーン位置
+    const shelfBottom = document.getElementById('shelf-bottom');
+    if (shelfBottom) {
+      shelfBottom.style.top = (spinnerCenterY + spawnDistance - shelfBottom.offsetHeight / 2) + 'px';
+    }
+  }, 50);
 }
 
 // 猫の手画像の読み込み
