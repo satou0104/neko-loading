@@ -185,7 +185,7 @@ function initCanvas() {
     // 下の棚: 90度（真下）のスポーン位置
     const shelfBottom = document.getElementById('shelf-bottom');
     if (shelfBottom) {
-      shelfBottom.style.top = (spinnerCenterY + spawnDistance - shelfBottom.offsetHeight * 0.5) + 'px';
+      shelfBottom.style.top = (spinnerCenterY + spawnDistance - shelfBottom.offsetHeight * 0.7) + 'px';
     }
   }, 50);
 }
