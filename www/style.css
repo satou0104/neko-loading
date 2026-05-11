@@ -337,8 +337,8 @@ html, body {
 /* 棚 */
 .shelf-bottom {
   position: absolute;
-  width: 100%;
-  left: 0;
+  width: 110%;
+  left: -5%;
   pointer-events: none;
   z-index: 2;
 }
