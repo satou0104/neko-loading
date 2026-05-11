@@ -291,16 +291,16 @@ function drawSpinner() {
   ctx.shadowBlur = 0;
 
   // ミスをスピナー右上に表示
-  const missX = spinner.x + spinner.radius + spinner.dotRadius + 16;
-  const missY = spinner.y - spinner.radius - spinner.dotRadius - 8;
-  ctx.font = 'bold 13px -apple-system, sans-serif';
+  const missX = spinner.x + spinner.radius + spinner.dotRadius + 24;
+  const missY = spinner.y - spinner.radius - spinner.dotRadius - 16;
+  ctx.font = 'bold 16px -apple-system, sans-serif';
   ctx.fillStyle = 'rgba(255,255,255,0.6)';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
   ctx.fillText('ミス', missX, missY);
-  ctx.font = 'bold 22px -apple-system, sans-serif';
+  ctx.font = 'bold 26px -apple-system, sans-serif';
   ctx.fillStyle = missCount >= 7 ? '#ff6b6b' : '#ffffff';
-  ctx.fillText(missCount, missX, missY + 20);
+  ctx.fillText(missCount, missX, missY + 24);
 }
 
 // 猫の手を出現させる
