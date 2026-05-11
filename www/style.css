@@ -1,4 +1,4 @@
-/* リセチE��・基本設宁E*/
+/* リセット・基本設定 */
 * {
   margin: 0;
   padding: 0;
@@ -56,7 +56,7 @@ html, body {
   transition: none;
 }
 
-/* ホ�Eム画面 */
+/* ホーム画面 */
 #home-screen {
   background: #000000;
   justify-content: center;
@@ -214,7 +214,7 @@ html, body {
   height: 40px;
 }
 
-/* スチE�Eジ選抁E*/
+/* ステージ選択 */
 .stage-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -526,7 +526,7 @@ html, body {
   max-width: 300px;
 }
 
-/* 遊�E方画面 */
+/* 遊び方画面 */
 .how-to-content {
   flex: 1;
   overflow-y: auto;
@@ -554,7 +554,7 @@ html, body {
   line-height: 1.6;
 }
 
-/* チェチE��マ�Eク */
+/* チェックマーク */
 .check-mark {
   position: absolute;
   top: 50%;
