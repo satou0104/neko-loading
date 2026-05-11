@@ -194,7 +194,7 @@ function initCanvas() {
     // 上の棚: 270度（真上）のスポーン位置
     const shelfTop = document.getElementById('shelf-top');
     if (shelfTop) {
-      shelfTop.style.top = (spinnerCenterY - spawnDistance - shelfTop.offsetHeight / 2) + 'px';
+      shelfTop.style.top = (spinnerCenterY - spawnDistance - shelfTop.offsetHeight) + 'px';
     }
 
     // 下の棚: 90度（真下）のスポーン位置
