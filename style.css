@@ -334,6 +334,23 @@ html, body {
   letter-spacing: 0.05em;
 }
 
+/* 棚 */
+.shelf-top, .shelf-bottom {
+  width: 100%;
+  display: block;
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+}
+
+.shelf-top {
+  margin-bottom: -20px;
+}
+
+.shelf-bottom {
+  margin-top: -20px;
+}
+
 /* 猫の手ボタン */
 .neko-buttons {
   display: flex;
