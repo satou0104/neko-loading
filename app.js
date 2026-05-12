@@ -27,7 +27,7 @@ const spinner = {
 
 // ローディング進行度
 let loadingPercent = 0;
-const loadingSpeed = 0.042; // 1フレームあたりの増加量（約40秒で100%）
+const loadingSpeed = 0.05; // 1フレームあたりの増加量（約33秒で100%）
 
 // ミスカウント
 let missCount = 0;
