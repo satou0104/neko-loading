@@ -514,6 +514,9 @@ function failStage() {
   if (consecutiveClear % 4 === 0) {
     setTimeout(() => showInterstitialAd(), 1000);
   }
+  // ランダムメッセージ
+  const messages = ['にゃー', 'にゃーにゃー', 'ミスるとロード時間が長くなるよ', 'にゃーーー'];
+  document.getElementById('fail-message').textContent = messages[Math.floor(Math.random() * messages.length)];
   showScreen('fail-screen');
 }
 
