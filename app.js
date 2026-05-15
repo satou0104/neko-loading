@@ -242,6 +242,10 @@ async function startStage(stageId) {
   
   // ゲーム開始
   gameRunning = true;
+  
+  // 最初の猫の手を早めに出す（0.5秒後）
+  nekoSpawnTimer = nekoSpawnInterval - 30;
+  
   gameLoop();
 }
 
