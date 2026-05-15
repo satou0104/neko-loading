@@ -243,8 +243,8 @@ async function startStage(stageId) {
   // ゲーム開始
   gameRunning = true;
   
-  // 最初の猫の手を早めに出す（0.5秒後）
-  nekoSpawnTimer = nekoSpawnInterval - 30;
+  // 最初の猫の手を即座に出す（5フレーム後≒0.08秒）
+  nekoSpawnTimer = nekoSpawnInterval - 5;
   
   gameLoop();
 }
@@ -311,8 +311,8 @@ function spawnNekoHand() {
   const angle = angleIndex * angleStep;
   const angleRad = (angle * Math.PI) / 180;
   
-  // 画面外の距離（十分遠くからスタート）
-  const distance = Math.max(canvasWidth, canvasHeight) + 400;
+  // 画面外の距離（Canvas端のすぐ外から出現）
+  const distance = Math.max(canvasWidth, canvasHeight) / 2 + 80;
   
   // 開始位置（画面外）
   const startX = spinner.x + Math.cos(angleRad) * distance;
