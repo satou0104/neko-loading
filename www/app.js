@@ -63,10 +63,10 @@ function generateStageConfig(stageId) {
   let spawnInterval = 120;
   let nekoSpeed = 2.0;
   
-  // 難易度調整（30ステージ、段階的に難しくなる）
-  // ステージ1: 間隔120, 速度0.75 → ステージ30: 間隔40, 速度2.2
-  spawnInterval = 120 - Math.floor((stageId - 1) * (80 / 29)); // 120→40
-  nekoSpeed = 0.75 + (stageId - 1) * (1.45 / 29); // 0.75→2.2
+  // 難易度調整（20ステージ、段階的に難しくなる）
+  // ステージ1: 間隔120, 速度0.75 → ステージ20: 間隔40, 速度2.2
+  spawnInterval = 120 - Math.floor((stageId - 1) * (80 / 19)); // 120→40
+  nekoSpeed = 0.75 + (stageId - 1) * (1.45 / 19); // 0.75→2.2
   
   const speed = 0.015 + rng() * 0.02;
   
@@ -121,7 +121,7 @@ function updateStageSelect() {
   const grid = document.getElementById('stage-grid');
   grid.innerHTML = '';
   
-  for (let i = 1; i <= 30; i++) {
+  for (let i = 1; i <= 20; i++) {
     const item = document.createElement('div');
     item.className = 'stage-item';
     
@@ -694,7 +694,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // クリア画面のボタン
   document.getElementById('btn-next-stage').addEventListener('click', () => {
-    if (currentStage < 30) {
+    if (currentStage < 20) {
       startStage(currentStage + 1);
     } else {
       updateStageSelect();
