@@ -64,9 +64,9 @@ function generateStageConfig(stageId) {
   let nekoSpeed = 2.0;
   
   // 難易度調整（30ステージ、段階的に難しくなる）
-  // ステージ1: 間隔150, 速度1.2 → ステージ30: 間隔40, 速度3.0
+  // ステージ1: 間隔150, 速度0.75 → ステージ30: 間隔40, 速度2.2
   spawnInterval = 150 - Math.floor((stageId - 1) * (110 / 29)); // 150→40
-  nekoSpeed = 1.2 + (stageId - 1) * (1.8 / 29); // 1.2→3.0
+  nekoSpeed = 0.75 + (stageId - 1) * (1.45 / 29); // 0.75→2.2
   
   const speed = 0.015 + rng() * 0.02;
   
