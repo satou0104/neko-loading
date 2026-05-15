@@ -1,6 +1,6 @@
 {
   "name": "neko-loading",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ネコローディング - 猫の手からスピナーを守るゲーム",
   "main": "index.js",
   "scripts": {
