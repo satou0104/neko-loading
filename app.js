@@ -312,7 +312,7 @@ function spawnNekoHand() {
   const angleRad = (angle * Math.PI) / 180;
   
   // 画面外の距離（Canvas端のすぐ外から出現）
-  const distance = Math.max(canvasWidth, canvasHeight) / 2 + 30;
+  const distance = Math.max(canvasWidth, canvasHeight) / 2 + 50;
   
   // 開始位置（画面外）
   const startX = spinner.x + Math.cos(angleRad) * distance;
