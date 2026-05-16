@@ -357,7 +357,7 @@ function updateNekoHands() {
     // スピナーに到達したらダメージ
     if (distanceToCenter <= spinner.radius + spinner.dotRadius + 20) {
       nekoHands.splice(index, 1);
-      loadingPercent = Math.max(0, loadingPercent - 10);
+      loadingPercent = Math.max(0, loadingPercent - 4);
       addMiss();
     }
   }
