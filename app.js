@@ -31,6 +31,7 @@ const loadingSpeed = 0.042; // 1フレームあたりの増加量（約40秒で1
 
 // ミスカウント
 let missCount = 0;
+let invincible = false;
 
 // 猫の手
 let nekoHands = [];
@@ -227,6 +228,7 @@ async function startStage(stageId) {
   // ゲーム状態リセット
   loadingPercent = 0;
   missCount = 0;
+  invincible = false;
   nekoHands = [];
   nekoSpawnTimer = 0;
   nekoSpawnInterval = config.spawnInterval;
@@ -354,11 +356,15 @@ function updateNekoHands() {
       (neko.y - spinner.y) ** 2
     );
     
-    // スピナーに到達したらダメージ
+    // スピナーに到達したらダメージ（無敵時間中はスキップ）
     if (distanceToCenter <= spinner.radius + spinner.dotRadius + 20) {
       nekoHands.splice(index, 1);
-      loadingPercent = Math.max(0, loadingPercent - 4);
-      addMiss();
+      if (!invincible) {
+        loadingPercent = Math.max(0, loadingPercent - 4);
+        addMiss();
+        invincible = true;
+        setTimeout(() => { invincible = false; }, 700);
+      }
     }
   }
 }
