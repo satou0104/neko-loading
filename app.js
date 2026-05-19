@@ -410,8 +410,10 @@ function onNekoButtonTap(nekoType) {
     nekoHands.splice(foundIndex, 1);
     flashButton(nekoType, true);
   } else {
-    // 不正解（お手付き）
-    addMiss();
+    // 不正解（お手付き）- 無敵時間中はスキップ
+    if (!invincible) {
+      addMiss();
+    }
     flashButton(nekoType, false);
   }
 }
