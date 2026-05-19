@@ -363,7 +363,7 @@ function updateNekoHands() {
         loadingPercent = Math.max(0, loadingPercent - 4);
         addMiss();
         invincible = true;
-        setTimeout(() => { invincible = false; }, 700);
+        setTimeout(() => { invincible = false; }, 1000);
       }
     }
   }
